@@ -8,8 +8,12 @@ function CharacterList({ characters }) {
   );
 }
 
-function Character() {
-  return <div className="list__item">{item.title}</div>;
+function Character({ item }) {
+  return (
+    <div className="list__item">
+      <img src={item.image} alt={item.name} />
+    </div>
+  );
 }
 
 export default CharacterList;
