@@ -12,6 +12,9 @@ function Character({ item }) {
   return (
     <div className="list__item">
       <img src={item.image} alt={item.name} />
+      <h3 className="name">
+        <span>{item.gender === "Male" ? "🧔🏻‍♂️" : "👩🏻‍🦱"}</span>
+      </h3>
     </div>
   );
 }
