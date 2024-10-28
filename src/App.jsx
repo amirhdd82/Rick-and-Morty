@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import {characters} from "./data/data"
+import {characters} from "../data/data"
 import "./App.css";
 import CharacterList from "./components/CharacterList";
 import CharacterDetail from "./components/CharacterDetail";
