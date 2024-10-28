@@ -15,8 +15,15 @@ function CharacterDetail() {
             <span> {character.name}</span>
           </h3>
           <div className="info">
-            <span className={`status ${character.status === "Dead" ? "red" : ""}`}></span>
-            
+            <span
+              className={`status ${character.status === "Dead" ? "red" : ""}`}
+            ></span>
+            <span> {character.status}</span>
+            <span> - {character.species}</span>
+          </div>
+          <div className="location">
+            <p>last known location:</p>
+            <p>{character.location.name}</p>
           </div>
         </div>
       </div>
