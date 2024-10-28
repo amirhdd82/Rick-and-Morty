@@ -16,6 +16,9 @@ function Character({ item }) {
         <span>{item.gender === "Male" ? "🧔🏻‍♂️" : "👩🏻‍🦱"}</span>
         <span>{item.name}</span>
       </h3>
+      <div className="list-item__info">
+        <span className={`status ${item.status === "Dead" ? "red" : ""}`}></span>
+      </div>
     </div>
   );
 }
