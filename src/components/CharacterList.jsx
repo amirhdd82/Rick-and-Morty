@@ -1,9 +1,11 @@
-import React from 'react'
-
-function CharacterList() {
+function CharacterList({ characters }) {
   return (
-    <div>CharacterList</div>
-  )
+    <div className="characters-list">
+      {characters.map((item) => (
+        <Character key={item.id} item={item} />
+      ))}
+    </div>
+  );
 }
 
-export default CharacterList
+export default CharacterList;
