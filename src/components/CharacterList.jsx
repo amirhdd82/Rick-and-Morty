@@ -8,4 +8,8 @@ function CharacterList({ characters }) {
   );
 }
 
+function Character() {
+  return <div className="list__item">{item.title}</div>;
+}
+
 export default CharacterList;
