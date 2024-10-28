@@ -1,5 +1,5 @@
 function CharacterDetail() {
-  return <div>CharacterDetail</div>;
+  return <div style={{flex: 1}}></div>;
 }
 
 export default CharacterDetail;
