@@ -1,9 +1,7 @@
 import { EyeIcon } from "@heroicons/react/24/outline";
-import { Allcharacters } from "../data/data";
-import { useState } from "react";
+import { Allcharacters } from "../../data/data";
 
 function CharacterList() {
-  const [characters, setCharacters] = useState(Allcharacters);
   return (
     <div className="characters-list">
       {Allcharacters.map((item) => (
@@ -18,7 +16,7 @@ function Character({ item }) {
     <div className="list__item">
       <img src={item.image} alt={item.name} />
       <CharacterName item={item} />
-      <CharacterInfo item={item}/>
+      <CharacterInfo item={item} />
       <button className="icon red">
         <EyeIcon />
       </button>
