@@ -25,6 +25,9 @@ function CharacterDetail() {
             <p>last known location:</p>
             <p>{character.location.name}</p>
           </div>
+          <div className="actions">
+            <button className="">Add to Favourite</button>
+          </div>
         </div>
       </div>
       <div className="character-episodes"></div>
