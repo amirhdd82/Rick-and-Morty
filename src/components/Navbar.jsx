@@ -4,7 +4,7 @@ function Navbar({ numOfResult }) {
   return (
     <div className="navbar">
       <Logo />
-      <input type="text" className="text-field" placeholder="search..." />
+      <Search />
       <div className="navbar__result">Found {numOfResult} character</div>
       <button className="heart">
         <HeartIcon className="icon" />
@@ -16,6 +16,10 @@ function Navbar({ numOfResult }) {
 
 function Logo() {
   return <div className="navbar__logo">LOGO🧌</div>;
+}
+
+function Search() {
+  return <input type="text" className="text-field" placeholder="search..." />;
 }
 
 export default Navbar;
