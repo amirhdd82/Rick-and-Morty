@@ -6,10 +6,7 @@ function Navbar({ numOfResult }) {
       <Logo />
       <Search />
       <SearchResult />
-      <button className="heart">
-        <HeartIcon className="icon" />
-        <span className="badge">4</span>
-      </button>
+      <Favourites />
     </div>
   );
 }
@@ -26,6 +23,13 @@ function SearchResult() {
   return <div className="navbar__result">Found {numOfResult} character</div>;
 }
 
-function Favourites() {}
+function Favourites() {
+  return (
+    <button className="heart">
+      <HeartIcon className="icon" />
+      <span className="badge">4</span>
+    </button>
+  );
+}
 
 export default Navbar;
