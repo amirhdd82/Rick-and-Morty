@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import {characters} from "../data/data"
 import "./App.css";
 import CharacterList from "./components/CharacterList";
 import CharacterDetail from "./components/CharacterDetail";
@@ -8,7 +7,7 @@ function App() {
     <div className="app">
       <Navbar />
       <div className="main">
-        <CharacterList characters={characters}/>
+        <CharacterList/>
         <CharacterDetail />
       </div> 
     </div>
