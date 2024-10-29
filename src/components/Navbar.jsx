@@ -14,4 +14,6 @@ function Navbar({numOfResult }) {
   );
 }
 
+
+
 export default Navbar;
