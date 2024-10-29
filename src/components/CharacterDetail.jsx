@@ -1,4 +1,6 @@
 import { character } from "../../data/data";
+import {ArrowUpCircleIcon} from "@heroicons/react/24/outline"
+
 
 function CharacterDetail() {
   return (
@@ -26,11 +28,16 @@ function CharacterDetail() {
             <p>{character.location.name}</p>
           </div>
           <div className="actions">
-            <button className="">Add to Favourite</button>
+            <button className="btn btn--primary">Add to Favourite</button>
           </div>
         </div>
       </div>
-      <div className="character-episodes"></div>
+      <div className="character-episodes">
+        <h2>list of episodes</h2>
+        <button>
+          <ArrowUpCircleIcon className="icon"/>
+        </button>
+      </div>
     </div>
   );
 }
