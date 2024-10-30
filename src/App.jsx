@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+import Navbar, { SearchResult } from "./components/Navbar";
 import "./App.css";
 import CharacterList from "./components/CharacterList";
 import CharacterDetail from "./components/CharacterDetail";
@@ -9,7 +9,9 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar numOfResult={characters.length}/>
+      <Navbar numOfResult={characters.length}>
+        <SearchResult numOfResult={numOfResult}/>
+      </Navbar>
       <Main characters={characters}>
       <div className="main">
         <CharacterList characters={characters }/>
