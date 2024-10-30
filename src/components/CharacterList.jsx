@@ -1,6 +1,5 @@
 import { EyeIcon } from "@heroicons/react/24/outline";
 
-
 function CharacterList({ characters }) {
   return (
     <div className="characters-list">
@@ -11,7 +10,7 @@ function CharacterList({ characters }) {
   );
 }
 
-function Character({ item}) {
+function Character({ item }) {
   return (
     <div className="list__item">
       <img src={item.image} alt={item.name} />
