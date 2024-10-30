@@ -9,10 +9,10 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar numOfResult={characters.length}>
-        <SearchResult numOfResult={numOfResult}/>
+      <Navbar>
+        <SearchResult numOfResult={characters.length}/>
       </Navbar>
-      <Main characters={characters}>
+      <Main>
       <div className="main">
         <CharacterList characters={characters }/>
         <CharacterDetail />

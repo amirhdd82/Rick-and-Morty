@@ -20,7 +20,7 @@ function Search() {
   return <input type="text" className="text-field" placeholder="search..." />;
 }
 
-export function SearchResult() {
+export function SearchResult({numOfResult}) {
   return <div className="navbar__result">Found {numOfResult} character</div>;
 }
 
