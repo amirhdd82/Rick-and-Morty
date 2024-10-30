@@ -1,17 +1,17 @@
 import { EyeIcon } from "@heroicons/react/24/outline";
-import { Allcharacters } from "../../data/data";
 
-function CharacterList() {
+
+function CharacterList({ characters }) {
   return (
     <div className="characters-list">
-      {Allcharacters.map((item) => (
+      {characters.map((item) => (
         <Character key={item.id} item={item} />
       ))}
     </div>
   );
 }
 
-function Character({ item }) {
+function Character({ item}) {
   return (
     <div className="list__item">
       <img src={item.image} alt={item.name} />

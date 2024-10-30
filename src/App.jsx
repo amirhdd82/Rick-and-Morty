@@ -3,17 +3,17 @@ import "./App.css";
 import CharacterList from "./components/CharacterList";
 import CharacterDetail from "./components/CharacterDetail";
 import { useEffect, useState } from "react";
-import { Allcharacters } from "../data/data";
 function App() {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch("https://rickandmortyapi.com/api/character")
-      const data = await res.json()
-      setCharacters(data.results.slice(0, 5))
+      const res = await fetch("https://rickandmortyapi.com/api/character");
+      const data = await res.json();
+      setCharacters(data.results.slice(0, 5));
+      console.log(data);
     }
-    fetchData( );
+    fetchData();
   }, []);
 
   return (
