@@ -9,8 +9,8 @@ import axios from "axios";
 function App() {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState("")
-
+  const [query, setQuery] = useState("");
+  const [selectedId, setSelectedId] = useState(null);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -22,6 +22,7 @@ function App() {
         setCharacters(data.results.slice(0, 5));
         // setIsLoading(false);
       } catch (error) {
+        setCharacters([]);
         toast.error(error.response.data.error);
       } finally {
         setIsLoading(false);
@@ -29,6 +30,10 @@ function App() {
     }
     fetchData();
   }, [query]);
+
+  const handleSelectCharacter = (id) => {
+    setSelectedId(id);
+  };
 
   return (
     <div className="app">
@@ -39,8 +44,12 @@ function App() {
       </Navbar>
       <Main>
         <div className="main">
-          <CharacterList characters={characters} isLoading={isLoading} />
-          <CharacterDetail />
+          <CharacterList
+            characters={characters}
+            isLoading={isLoading}
+            onSelectCharacter={handleSelectCharacter}
+          />
+          <CharacterDetail selectedId={selectedId}/>
         </div>
       </Main>
     </div>
