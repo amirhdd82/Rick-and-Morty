@@ -26,7 +26,7 @@ function App() {
       </Navbar>
       <Main>
         <div className="main">
-          <CharacterList characters={characters} />
+          <CharacterList characters={characters} isLoading={isLoading}/>
           <CharacterDetail />
         </div>
       </Main>
