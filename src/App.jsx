@@ -14,15 +14,16 @@ function App() {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const res = await fetch("https://rickandmortyapi.com/api/character");
-        if(!res.ok) throw new Error("Something went wrong!")
-        const data = await res.json();
+        const { data } = await axios.get(
+          "https://rickandmortyapi.com/api/character"
+        );
+
         setCharacters(data.results.slice(0, 5));
         setIsLoading(false);
       } catch (error) {
-        toast.error(error.message)
-      }finally{
-        setIsLoading(false)
+        toast.error(error.response.data.error);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchData();
