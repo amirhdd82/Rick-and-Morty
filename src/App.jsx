@@ -13,12 +13,14 @@ function App() {
   const [selectedId, setSelectedId] = useState(null);
   const [favourite, setFavourite] = useState([]);
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal
     async function fetchData() {
       try {
         setIsLoading(true);
         const { data } = await axios.get(
           `https://rickandmortyapi.com/api/character?name=${query}`
-        );
+        , {signal});
 
         setCharacters(data.results.slice(0, 5));
         // setIsLoading(false);
@@ -30,6 +32,11 @@ function App() {
       }
     }
     fetchData();
+
+    return () => {
+      controller.abort()
+    }
+
   }, [query]);
 
   const handleSelectCharacter = (id) => {
