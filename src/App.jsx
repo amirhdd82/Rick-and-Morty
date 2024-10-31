@@ -32,7 +32,7 @@ function App() {
   }, [query]);
 
   const handleSelectCharacter = (id) => {
-    setSelectedId(id);
+    setSelectedId((prevId) => (prevId === id ? null : id));
   };
 
   return (
@@ -45,11 +45,12 @@ function App() {
       <Main>
         <div className="main">
           <CharacterList
+            selectedId={selectedId}
             characters={characters}
             isLoading={isLoading}
             onSelectCharacter={handleSelectCharacter}
           />
-          <CharacterDetail selectedId={selectedId}/>
+          <CharacterDetail selectedId={selectedId} />
         </div>
       </Main>
     </div>

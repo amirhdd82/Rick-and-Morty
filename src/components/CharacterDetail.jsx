@@ -3,6 +3,7 @@ import { episodes } from "../../data/data";
 import { ArrowUpCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Loader from "./Loader";
+import toast from "react-hot-toast";
 
 function CharacterDetail({ selectedId }) {
   const [character, setCharacter] = useState(null);
@@ -17,6 +18,7 @@ function CharacterDetail({ selectedId }) {
         );
         setCharacter(data);
       } catch (error) {
+        toast.error(error.response.date.error);
       } finally {
         setIsLoading(false);
       }
