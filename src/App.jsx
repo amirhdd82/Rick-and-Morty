@@ -1,4 +1,4 @@
-import Navbar, { SearchResult } from "./components/Navbar";
+import Navbar, { Search, SearchResult } from "./components/Navbar";
 import "./App.css";
 import CharacterList from "./components/CharacterList";
 import CharacterDetail from "./components/CharacterDetail";
@@ -9,17 +9,18 @@ import axios from "axios";
 function App() {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState("")
 
   useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true);
         const { data } = await axios.get(
-          "https://rickandmortyapi.com/api/character"
+          `https://rickandmortyapi.com/api/character?name=${query}`
         );
 
         setCharacters(data.results.slice(0, 5));
-        setIsLoading(false);
+        // setIsLoading(false);
       } catch (error) {
         toast.error(error.response.data.error);
       } finally {
@@ -27,12 +28,13 @@ function App() {
       }
     }
     fetchData();
-  }, []);
+  }, [query]);
 
   return (
     <div className="app">
       <Toaster />
       <Navbar>
+        <Search query={query} setQuery={setQuery} />
         <SearchResult numOfResult={characters.length} />
       </Navbar>
       <Main>
