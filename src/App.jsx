@@ -10,11 +10,13 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      setIsLoading(true);
-      const res = await fetch("https://rickandmortyapi.com/api/character");
-      const data = await res.json();
-      setCharacters(data.results.slice(0, 5));
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const res = await fetch("https://rickandmortyapi.com/api/character");
+        const data = await res.json();
+        setCharacters(data.results.slice(0, 5));
+        setIsLoading(false);
+      } catch (error) {}
     }
     fetchData();
   }, []);
@@ -26,7 +28,7 @@ function App() {
       </Navbar>
       <Main>
         <div className="main">
-          <CharacterList characters={characters} isLoading={isLoading}/>
+          <CharacterList characters={characters} isLoading={isLoading} />
           <CharacterDetail />
         </div>
       </Main>
