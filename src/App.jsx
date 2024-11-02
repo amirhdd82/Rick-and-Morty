@@ -12,7 +12,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
-  const [favourites, setFavourite] = useState([]);
+  const [favourites, setFavourite] = useState(
+    () => JSON.parse(localStorage.getItem("FAVOURITES")) || []
+  );
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
@@ -40,12 +42,16 @@ function App() {
     };
   }, [query]);
 
+  useEffect(() => {
+    localStorage.setItem("FAVOURITES", JSON.stringify(favourites));
+  }, [favourites]);
+
   const handleSelectCharacter = (id) => {
     setSelectedId((prevId) => (prevId === id ? null : id));
   };
 
   const handleDeleteFavourite = (id) => {
-    setFavourite((prevFav) => prevFav.filter((fav) => fav.id !== id ));
+    setFavourite((prevFav) => prevFav.filter((fav) => fav.id !== id));
   };
 
   const handleOnAddFavourite = (char) => {
@@ -60,7 +66,10 @@ function App() {
       <Navbar>
         <Search query={query} setQuery={setQuery} />
         <SearchResult numOfResult={characters.length} />
-        <Favourites favourites={favourites} onDeleteFavourite={handleDeleteFavourite}/>
+        <Favourites
+          favourites={favourites}
+          onDeleteFavourite={handleDeleteFavourite}
+        />
       </Navbar>
       <Main>
         <div className="main">
