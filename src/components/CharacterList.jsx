@@ -13,7 +13,7 @@ function CharacterList({ characters, isLoading, children, onSelectCharacter, sel
   );
 }
 
-function Character({ item, onSelectCharacter, selectedId }) {
+export function Character({ item, onSelectCharacter, selectedId }) {
   return (
     <div className="list__item">
       <img src={item.image} alt={item.name} />

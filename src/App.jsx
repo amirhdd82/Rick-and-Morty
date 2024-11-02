@@ -53,11 +53,10 @@ function App() {
   return (
     <div className="app">
       <Toaster />
-      <Modal title="modal test" Open={true}>fncds</Modal>
       <Navbar>
         <Search query={query} setQuery={setQuery} />
         <SearchResult numOfResult={characters.length} />
-        <Favourites numOfFavourites={favourite.length} />
+        <Favourites favourite={favourite} />
       </Navbar>
       <Main>
         <div className="main">
