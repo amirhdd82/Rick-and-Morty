@@ -44,6 +44,10 @@ function App() {
     setSelectedId((prevId) => (prevId === id ? null : id));
   };
 
+  const handleDeleteFavourite = (id) => {
+    setFavourite((prevFav) => prevFav.filter((fav) => fav.id !== id ));
+  };
+
   const handleOnAddFavourite = (char) => {
     setFavourite((prevFav) => [...prevFav, char]);
   };
@@ -56,7 +60,7 @@ function App() {
       <Navbar>
         <Search query={query} setQuery={setQuery} />
         <SearchResult numOfResult={characters.length} />
-        <Favourites favourites={favourites} />
+        <Favourites favourites={favourites} onDeleteFavourite={handleDeleteFavourite}/>
       </Navbar>
       <Main>
         <div className="main">
