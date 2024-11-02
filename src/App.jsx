@@ -12,16 +12,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
-  const [favourite, setFavourite] = useState([]);
+  const [favourites, setFavourite] = useState([]);
   useEffect(() => {
     const controller = new AbortController();
-    const signal = controller.signal
+    const signal = controller.signal;
     async function fetchData() {
       try {
         setIsLoading(true);
         const { data } = await axios.get(
-          `https://rickandmortyapi.com/api/character?name=${query}`
-        , {signal});
+          `https://rickandmortyapi.com/api/character?name=${query}`,
+          { signal }
+        );
 
         setCharacters(data.results.slice(0, 5));
         // setIsLoading(false);
@@ -35,9 +36,8 @@ function App() {
     fetchData();
 
     return () => {
-      controller.abort()
-    }
-
+      controller.abort();
+    };
   }, [query]);
 
   const handleSelectCharacter = (id) => {
@@ -48,7 +48,7 @@ function App() {
     setFavourite((prevFav) => [...prevFav, char]);
   };
 
-  const isAddToFavourite = favourite.map((fav) => fav.id).includes(selectedId);
+  const isAddToFavourite = favourites.map((fav) => fav.id).includes(selectedId);
 
   return (
     <div className="app">
@@ -56,7 +56,7 @@ function App() {
       <Navbar>
         <Search query={query} setQuery={setQuery} />
         <SearchResult numOfResult={characters.length} />
-        <Favourites favourite={favourite} />
+        <Favourites favourites={favourites} />
       </Navbar>
       <Main>
         <div className="main">
@@ -67,9 +67,9 @@ function App() {
             onSelectCharacter={handleSelectCharacter}
           />
           <CharacterDetail
-            isAddToFavourite={isAddToFavourite}
             selectedId={selectedId}
             onAddFavourite={handleOnAddFavourite}
+            isAddToFavourite={isAddToFavourite}
           />
         </div>
       </Main>

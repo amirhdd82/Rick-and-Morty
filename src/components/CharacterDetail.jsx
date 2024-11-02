@@ -50,16 +50,16 @@ function CharacterDetail({ selectedId, onAddFavourite, isAddToFavourite }) {
   return (
     <div style={{ flex: 1 }}>
       <CharacterSubInfo
+        onAddFavourite={onAddFavourite}
         character={character}
         isAddToFavourite={isAddToFavourite}
-        onAddFavourite={onAddFavourite}
       />
       <EpisodesList episodes={episodes} />
     </div>
   );
 }
 
-function CharacterSubInfo({ character, isAddToFavourite }) {
+function CharacterSubInfo({ character, isAddToFavourite, onAddFavourite }) {
   return (
     <div className="character-detail">
       <img
