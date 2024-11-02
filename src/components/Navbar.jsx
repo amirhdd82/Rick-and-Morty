@@ -38,7 +38,7 @@ export function Favourites({ favourites }) {
     <>
       <Modal Onopen={setIsOpen} Open={isOpen} title="List of Favourites">
         {favourites.map((item) => (
-          <Character item={item} selectedId="1" onSelectCharacter={() => {}} />
+          <Character key={item.id } item={item} selectedId="1" onSelectCharacter={() => {}} />
         ))}
       </Modal>
 
