@@ -49,30 +49,16 @@ function CharacterDetail({ selectedId, onAddFavourite, isAddToFavourite }) {
 
   return (
     <div style={{ flex: 1 }}>
-      <div className="character-episodes">
-        <div className="title">
-          <h2>list of episodes</h2>
-          <button>
-            <ArrowUpCircleIcon className="icon" />
-          </button>
-        </div>
-        <ul>
-          {episodes.map((item, index) => (
-            <li key={item.id}>
-              <div>
-                {String(index + 1).padStart(2, "0 ")} {item.episode} :{" "}
-                <strong>{item.name}</strong>
-              </div>
-              <div className="badge badge--secondary">{item.air_date}</div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <CharacterSubInfo
+        character={character}
+        isAddToFavourite={isAddToFavourite}
+      />
+      <EpisodesList episodes={episodes} />
     </div>
   );
 }
 
-function CharacterSubInfo() {
+function CharacterSubInfo({ character, isAddToFavourite }) {
   return (
     <div className="character-detail">
       <img
@@ -109,6 +95,44 @@ function CharacterSubInfo() {
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function EpisodesList({ episodes }) {
+  const [sortby, setSortby] = useState(true);
+
+  let sortedEpisodes;
+
+  if (sortby) {
+    sortedEpisodes = [...episodes].sort(
+      (a, b) => new Date(a.created) - new Date(b.created)
+    );
+  } else {
+    sortedEpisodes = [...episodes].sort(
+      (a, b) => new Date(b.created) - new Date(a.created)
+    );
+  }
+
+  return (
+    <div className="character-episodes">
+      <div className="title">
+        <h2>list of episodes</h2>
+        <button onClick={() => setSortby((is) => !is)}>
+          <ArrowUpCircleIcon className="icon" />
+        </button>
+      </div>
+      <ul>
+        {sortedEpisodes.map((item, index) => (
+          <li key={item.id}>
+            <div>
+              {String(index + 1).padStart(2, "0 ")} {item.episode} :{" "}
+              <strong>{item.name}</strong>
+            </div>
+            <div className="badge badge--secondary">{item.air_date}</div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
