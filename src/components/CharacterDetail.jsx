@@ -52,6 +52,7 @@ function CharacterDetail({ selectedId, onAddFavourite, isAddToFavourite }) {
       <CharacterSubInfo
         character={character}
         isAddToFavourite={isAddToFavourite}
+        onAddFavourite={onAddFavourite}
       />
       <EpisodesList episodes={episodes} />
     </div>
@@ -119,7 +120,10 @@ function EpisodesList({ episodes }) {
       <div className="title">
         <h2>list of episodes</h2>
         <button onClick={() => setSortby((is) => !is)}>
-          <ArrowUpCircleIcon className="icon" />
+          <ArrowUpCircleIcon
+            className="icon"
+            style={{ rotate: sortby ? "0deg" : "180deg" }}
+          />
         </button>
       </div>
       <ul>
